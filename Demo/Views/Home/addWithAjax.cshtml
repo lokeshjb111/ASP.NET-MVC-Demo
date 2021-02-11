@@ -1,0 +1,91 @@
+﻿@model User
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get("getForm", function (data, status) {
+                $("#formContainer").html(data);
+            });
+            $(document).on('click', '#addBtn', function () {
+                var std = {};
+                std.Name = $("#name").val();
+                std.Age = $("#age").val();
+                std.phone = $("#phone").val();
+                std.Email = $("#email").val();
+                $.post("addWithAjax",
+                    std,
+                    function (data, status) {
+                        //$("#formContainer").load(location.href + " #formContainer");
+                        $("#formContainer").html(data);
+                        //alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+            
+
+        });
+    </script>
+}
+
+<div id="formContainer" >
+
+</div>
+
+
+@*<div id="formContainer">
+    <div>
+            <h1>User Registration With Ajax</h1>
+            <br />
+            <div>
+                <div style="width:500px">
+                    <div>
+                        <div>
+                            <div><label asp-for="Name">Name</label></div>
+                            <div>
+                                <div class="form-group row">
+                                    <input asp-for="Name" class="form-control" id="name" />
+                                    <span style="color:red" asp-validation-for="Name"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div><label asp-for="Age">Age</label></div>
+                            <div>
+                                <div class="form-group row">
+                                    <input asp-for="Age" class="form-control" id="age" />
+                                    <span style="color:red" asp-validation-for="Age"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div><label asp-for="Phone">Phone</label></div>
+                            <div>
+                                <div class="form-group row">
+                                    <input type="number" asp-for="Phone" class="form-control" id="phone" />
+                                    <span style="color:red" asp-validation-for="Phone"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div><label asp-for="Email">Email</label></div>
+                            <div>
+                                <div class="form-group row">
+                                    <input asp-for="Email" class="form-control" id="email" />
+                                    <span style="color:red" asp-validation-for="Email"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button id="addBtn" type="button">Add User</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>*@

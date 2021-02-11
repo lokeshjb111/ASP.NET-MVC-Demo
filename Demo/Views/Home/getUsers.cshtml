@@ -1,0 +1,45 @@
+﻿
+@section Styles{
+    <style type="text/css">
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+      /*  tr:nth-child(even) {
+            background-color: #ffffds;
+        }*/
+    </style>
+}
+
+<h1>Users</h1>
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Phone</th>
+        </tr>
+        @{
+            List<User> users = ViewData["users"] as List<User>;
+            for (var count = 0; count < users.Count; count++)
+            {
+                <tr>
+                    <td>@users[count].Name</td>
+                    <td>@users[count].Email</td>
+                    <td>@users[count].Age</td>
+                    <td>@users[count].Phone</td>
+                </tr>
+            }
+
+        }
+    </table>
+</div>
